@@ -42,39 +42,5 @@ Error generating stack: `+u.message+`
 </script>
   <script>(function(){function m(a){var h=a.getAttribute("href");if(!h)return;try{var u=new URL(h,document.baseURI);if((u.protocol==="http:"||u.protocol==="https:")&&u.host!==location.host){a.target="_blank";a.rel="noopener noreferrer";}}catch(e){}}function s(){document.querySelectorAll("a[href]").forEach(m);}if(document.readyState!=="loading"){s();}else{document.addEventListener("DOMContentLoaded",s);}document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest("a[href]");if(a){m(a);}},true);})();</script>
   
-
-<!-- STUDENT PORTAL OVERLAY - READ ONLY -->
-<div id="portal" style="display:none; position:fixed; inset:0; background:#0A1931; z-index:9999; overflow:auto; padding:20px;">
-  <div style="max-width:1100px; margin:0 auto; background:white; border-radius:20px; padding:30px;">
-    <h2 style="font-size:32px; font-weight:800; color:#0A1931;">Student Portal - Read Only</h2>
-    <p style="color:#666;">Admission: HHS/2026/0001 | House: Falcon | WhatsApp: +263782828857</p>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
-      <div style="border:1px solid #e5e7eb; border-radius:12px; padding:20px;"><h3>Results</h3><p id="resultsBox">Loading...</p><button onclick="loadResults()" style="background:#2EB5E5; color:white; padding:10px 20px; border-radius:8px; border:none;">Load Published Results</button></div>
-      <div style="border:1px solid #e5e7eb; border-radius:12px; padding:20px;"><h3>Fees Balance</h3><p>US$0.00 - Paid</p><button onclick="window.open('/api/student/report-card/NOV2025')" style="background:#0A1931; color:white; padding:10px 20px; border-radius:8px; border:none;">Download Report Card PDF</button></div>
-      <div style="border:1px solid #e5e7eb; border-radius:12px; padding:20px;"><h3>Newsletters</h3><p>Term 1 2026 Newsletter Available</p></div>
-      <div style="border:1px solid #e5e7eb; border-radius:12px; padding:20px;"><h3>Bulk Upload (Teachers Only)</h3><input type=file id=file><button onclick="uploadBulk()" style="background:#C9A86A; color:white; padding:10px 20px; border-radius:8px; border:none; margin-left:10px;">Upload Excel</button><p id=uploadStatus></p></div>
-    </div>
-    <button onclick="document.getElementById('portal').style.display='none'" style="margin-top:20px; background:#E30613; color:white; padding:12px 24px; border-radius:10px; border:none;">Close Portal</button>
-  </div>
-</div>
-<script>
-function openPortal(){ document.getElementById('portal').style.display='block'; }
-async function loadResults(){
-  const token = localStorage.getItem('howard_token');
-  const r = await fetch('/api/student/results', {headers:{Authorization:'Bearer '+token}});
-  const data = await r.json();
-  document.getElementById('resultsBox').innerText = JSON.stringify(data, null, 2);
-}
-async function uploadBulk(){
-  const file = document.getElementById('file').files[0];
-  if(!file) return alert('Select file');
-  const fd = new FormData(); fd.append('file', file);
-  const token = localStorage.getItem('howard_token');
-  const r = await fetch('/api/results/bulk/subject', {method:'POST', headers:{Authorization:'Bearer '+token}, body:fd});
-  const data = await r.json();
-  document.getElementById('uploadStatus').innerText = `Uploaded: ${data.success}/${data.total} success. WhatsApp: +263782828857`;
-}
-</script>
-
 </body>
 </html>
