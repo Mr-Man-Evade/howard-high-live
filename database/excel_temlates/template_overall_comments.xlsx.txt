@@ -1,0 +1,3 @@
+Sheet 0: Overall Comments
+admission_no | overall_comment | conduct | attendance_days | position_in_class | session_id
+HHS/2026/0001 | Shows Godliness and Good Learning | Excellent | 70 | 5 | NOV2025
