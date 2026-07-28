@@ -1,0 +1,3 @@
+Sheet 0: Students Bulk
+first_name | last_name | dob | gender | house | form | stream | parent_phone | parent_name | parent_relationship | enrollment_year
+Anesu | Dube | 2013-05-10 | M | Falcon | 1 | A | +263782828857 | Evade Dube | father | 2026

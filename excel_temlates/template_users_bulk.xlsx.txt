@@ -1,0 +1,3 @@
+Sheet 0: Users Bulk
+full_name | email | phone | role | department | designation | staff_no
+Mrs Moyo | moyo@howard.ac.zw | +263772374852 | teacher | academics | HOD Sciences | STF001
