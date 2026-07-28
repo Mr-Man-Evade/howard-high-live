@@ -1,0 +1,19 @@
+
+services:
+  - type: web
+    name: howard-high-live
+    env: node
+    region: frankfurt
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        value: HOWARD_GODLINESS_1923_SUPER_SECRET
+      - key: WHATSAPP_NUMBER
+        value: +263782828857
+      - key: PORT
+        value: 10000
